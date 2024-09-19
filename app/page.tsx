@@ -2,7 +2,7 @@
 import dynamic from 'next/dynamic';
 
 const KonvaCanvas = dynamic(
-  () => import('@Components/konvaCanvas'),
+  () => import('@/components/konvaCanvas'),
   { ssr: false }
 );
 

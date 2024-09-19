@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Stage, Layer, Rect } from 'react-konva';
 import { HexColorPicker } from 'react-colorful';
+import InputField from '@/components/inputField';
 
 const KonvaCanvas = () => {
   const [width, setWidth] = useState<number>(16); // default canvas width (in pixels)
@@ -18,23 +19,8 @@ const KonvaCanvas = () => {
       <h1>Pixel Creator</h1>
 
       <div>
-        <label>
-          Width:
-          <input
-            type='number'
-            value={width}
-            onChange={(e) => setWidth(parseInt(e.target.value))}
-						className='mr-2.5'
-          />
-        </label>
-        <label>
-          Height:
-          <input
-            type='number'
-            value={height}
-            onChange={(e) => setHeight(parseInt(e.target.value))}
-          />
-        </label>
+        <InputField labelName='Width' value={width} max={25} onChange={setWidth} inputClassName='mr-2.5' />
+        <InputField labelName='Height' value={height} max={25} onChange={setHeight} />
       </div>
 
       <div className='flex m-5'>
