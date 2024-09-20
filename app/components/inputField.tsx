@@ -16,6 +16,8 @@ const InputField = ({ labelName, value, max, onChange, inputClassName }: InputFi
     
     if (inputValue > max) {
       setError(`Value cannot be greater than ${max}`);
+    } else if (inputValue < 1) {
+      setError('Value cannot be lower than 1');
     } else {
       setError('');
       onChange(inputValue);
@@ -30,11 +32,12 @@ const InputField = ({ labelName, value, max, onChange, inputClassName }: InputFi
           type='number'
           value={value}
           onChange={handleChange}
-          className={inputClassName || ''}
+          className={`${inputClassName} min-w-44` || ''}
+          min={1}
           max={max}
         />
       </label>
-      {error && <div className='text-error'>{error}</div>}
+      {error && <div className='text-error mt-2.5'>{error}</div>}
     </div>
   );
 };

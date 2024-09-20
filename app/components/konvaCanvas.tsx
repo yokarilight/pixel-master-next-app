@@ -18,13 +18,16 @@ const KonvaCanvas = () => {
     <div className='flex flex-col items-center'>
       <h1>Pixel Creator</h1>
 
-      <div>
-        <InputField labelName='Width' value={width} max={25} onChange={setWidth} inputClassName='mr-2.5' />
-        <InputField labelName='Height' value={height} max={25} onChange={setHeight} />
+      <div className='flex'>
+        <InputField labelName='Width' value={width} max={25} onChange={setWidth} inputClassName='text-black mx-2.5' />
+        <InputField labelName='Height' value={height} max={25} onChange={setHeight} inputClassName='text-black ml-2.5' />
       </div>
 
-      <div className='flex m-5'>
+      <div className='flex items-center m-5'>
         <HexColorPicker color={color} onChange={setColor} />
+        <div className='ml-2.5'>
+          The Color is <span>{color}</span>
+        </div>
       </div>
 
       <Stage width={width * pixelSize} height={height * pixelSize}>
