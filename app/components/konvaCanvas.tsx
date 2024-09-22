@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import Konva from 'konva';
 import { Stage, Layer, Rect } from 'react-konva';
 import { HexColorPicker } from 'react-colorful';
 import { ArrowUturnLeftIcon, ArrowPathIcon } from '@heroicons/react/24/solid';
@@ -14,7 +15,7 @@ const KonvaCanvas = () => {
   const [color, setColor] = useState<string>('#000000'); // current selected color
   const [pixels, setPixels] = useState<Array<{ x: number, y: number, color: string }>>([]); // array of pixels
   const [history, setHistory] = useState<Array<Array<{ x: number, y: number, color: string }>>>([]); // history of pixel states
-  const stageRef = useRef<any>(null); // reference to the stage for exporting
+  const stageRef = useRef<Konva.Stage>(null); // reference to the stage for exporting
 
   const handleClick = (x: number, y: number) => {
     setHistory([...history, pixels]);
