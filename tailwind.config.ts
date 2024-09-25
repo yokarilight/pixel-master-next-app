@@ -11,7 +11,9 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        error: '#EF4257',
+        "btn-primary": "#007BC6",
+        "btn-primary-hover": "#0056A8",
+        error: "#EF4257",
       },
     },
   },

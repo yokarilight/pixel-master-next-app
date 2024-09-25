@@ -73,37 +73,41 @@ const KonvaCanvas = () => {
         </div>
       </div>
 
-      <div className='flex mb-4'>
-        <ActionBtn 
-          onClick={handleUndo} 
-          label='Undo' 
-          icon={<ArrowUturnLeftIcon className='h-5 w-5' />}
-        />
-        <ActionBtn 
-          onClick={handleReset} 
-          label='Reset' 
-          icon={<ArrowPathIcon className='h-5 w-5' />}
-        />
-      </div>
+      <div className='mb-2'>This canvas size is {width} x {height}</div>
 
-      <Stage width={width * pixelSize} height={height * pixelSize} ref={stageRef}>
-        <Layer>
-          {Array.from({ length: width }).map((_, x) =>
-            Array.from({ length: height }).map((_, y) => (
-              <Rect
-                key={`${x}-${y}`}
-                x={x * pixelSize}
-                y={y * pixelSize}
-                width={pixelSize}
-                height={pixelSize}
-                fill={pixels.find((p) => p.x === x && p.y === y)?.color || '#fff'}
-                stroke='#ccc'
-                onClick={() => handleClick(x, y)}
-              />
-            ))
-          )}
-        </Layer>
-      </Stage>
+      <div className='flex'>
+        <Stage width={width * pixelSize} height={height * pixelSize} ref={stageRef}>
+          <Layer>
+            {Array.from({ length: width }).map((_, x) =>
+              Array.from({ length: height }).map((_, y) => (
+                <Rect
+                  key={`${x}-${y}`}
+                  x={x * pixelSize}
+                  y={y * pixelSize}
+                  width={pixelSize}
+                  height={pixelSize}
+                  fill={pixels.find((p) => p.x === x && p.y === y)?.color || '#fff'}
+                  stroke='#ccc'
+                  onClick={() => handleClick(x, y)}
+                />
+              ))
+            )}
+          </Layer>
+        </Stage>
+        <div className='ml-2 mb-4'>
+          <ActionBtn 
+            onClick={handleUndo} 
+            label='Undo' 
+            icon={<ArrowUturnLeftIcon className='h-5 w-5' />}
+          />
+          <ActionBtn 
+            onClick={handleReset} 
+            label='Reset' 
+            icon={<ArrowPathIcon className='h-5 w-5' />}
+            btnClassName='mt-4'
+          />
+        </div>
+      </div>
 
       <div className='mt-5 mb-8'>
         <ExportBtn onClick={() => exportImage('png')} format='png' />
